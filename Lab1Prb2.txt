@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int compare(const void *a, const void *b) {
+    char *word1 = *(char **)a;
+    char *word2 = *(char **)b;
+    int len1 = strlen(word1);
+    int len2 = strlen(word2);
+
+    if (len1 != len2) {
+        return len2 - len1;
+    }
+    return strcmp(word1, word2);
+}
+
+int main() {
+    char input[1024];
+    char *words[512];
+    int count = 0;
+
+    if (scanf("%[^\n]", input) != 1) {
+        return 0;
+    }
+
+    char *token = strtok(input, " ");
+    while (token != NULL) {
+        words[count++] = token;
+        token = strtok(NULL, " ");
+    }
+
+    qsort(words, count, sizeof(char *), compare);
+
+    for (int i = 0; i < count; i++) {
+        printf("%s\n", words[i]);
+    }
+
+    return 0;
+}
