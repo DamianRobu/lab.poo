@@ -1,9 +1,8 @@
 #include <stdio.h>
 
-long string_to_int(char *str) {
+long string_to_int(char* str) {
     long result = 0;
     int i = 0;
-
     while (str[i] != '\0' && str[i] != '\n' && str[i] != '\r') {
         if (str[i] >= '0' && str[i] <= '9') {
             result = result * 10 + (str[i] - '0');
@@ -14,11 +13,11 @@ long string_to_int(char *str) {
 }
 
 int main() {
-    FILE *file = fopen("in.txt", "r");
+    FILE* file;
     char line[256];
     long total_sum = 0;
 
-    if (file == NULL) {
+    if (fopen_s(&file, "in.txt", "r") != 0) {
         return 1;
     }
 
