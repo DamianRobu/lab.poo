@@ -99,13 +99,11 @@ using namespace std;
 int main() {
     Student a, b;
 
-    // Setam datele pentru primul student
     a.SetName("Ion");
     a.SetMath(8.5);
     a.SetEnglish(9.0);
     a.SetHistory(7.0);
 
-    // Setam datele pentru al doilea student
     b.SetName("Maria");
     b.SetMath(10.0);
     b.SetEnglish(8.5);
@@ -120,3 +118,4 @@ int main() {
 
     return 0;
 }
+
