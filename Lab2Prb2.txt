@@ -1,0 +1,122 @@
+Student.h:
+#pragma once
+#include <string>
+
+using namespace std;
+
+class Student {
+    string nume;
+    float notaMate, notaEngleza, notaIstorie;
+
+public:
+    void SetName(string n);
+    string GetName();
+
+    void SetMath(float n);
+    float GetMath();
+
+    void SetEnglish(float n);
+    float GetEnglish();
+
+    void SetHistory(float n);
+    float GetHistory();
+
+    float GetAverage();
+};
+
+Student.cpp:
+
+#include "Student.h"
+
+void Student::SetName(string n) { nume = n; }
+string Student::GetName() { return nume; }
+
+void Student::SetMath(float n) { notaMate = n; }
+float Student::GetMath() { return notaMate; }
+
+void Student::SetEnglish(float n) { notaEngleza = n; }
+float Student::GetEnglish() { return notaEngleza; }
+
+void Student::SetHistory(float n) { notaIstorie = n; }
+float Student::GetHistory() { return notaIstorie; }
+
+float Student::GetAverage() {
+    return (notaMate + notaEngleza + notaIstorie) / 3;
+}
+
+Comparisons.h:
+#pragma once
+#include "Student.h"
+
+int CompareName(Student s1, Student s2);
+int CompareMath(Student s1, Student s2);
+int CompareEnglish(Student s1, Student s2);
+int CompareHistory(Student s1, Student s2);
+int CompareAverage(Student s1, Student s2);
+
+Comparisons.cpp:
+
+#include "Comparisons.h"
+
+int CompareName(Student s1, Student s2) {
+    if (s1.GetName() == s2.GetName()) return 0;
+    if (s1.GetName() > s2.GetName()) return 1;
+    return -1;
+}
+
+int CompareMath(Student s1, Student s2) {
+    if (s1.GetMath() == s2.GetMath()) return 0;
+    if (s1.GetMath() > s2.GetMath()) return 1;
+    return -1;
+}
+
+int CompareEnglish(Student s1, Student s2) {
+    if (s1.GetEnglish() == s2.GetEnglish()) return 0;
+    if (s1.GetEnglish() > s2.GetEnglish()) return 1;
+    return -1;
+}
+
+int CompareHistory(Student s1, Student s2) {
+    if (s1.GetHistory() == s2.GetHistory()) return 0;
+    if (s1.GetHistory() > s2.GetHistory()) return 1;
+    return -1;
+}
+
+int CompareAverage(Student s1, Student s2) {
+    if (s1.GetAverage() == s2.GetAverage()) return 0;
+    if (s1.GetAverage() > s2.GetAverage()) return 1;
+    return -1;
+}
+
+main.cpp:
+
+#include <iostream>
+#include "Student.h"
+#include "Comparisons.h"
+
+using namespace std;
+
+int main() {
+    Student a, b;
+
+    // Setam datele pentru primul student
+    a.SetName("Ion");
+    a.SetMath(8.5);
+    a.SetEnglish(9.0);
+    a.SetHistory(7.0);
+
+    // Setam datele pentru al doilea student
+    b.SetName("Maria");
+    b.SetMath(10.0);
+    b.SetEnglish(8.5);
+    b.SetHistory(9.5);
+
+    cout << "Media lui " << a.GetName() << " este: " << a.GetAverage() << endl;
+    cout << "Media lui " << b.GetName() << " este: " << b.GetAverage() << endl;
+
+    cout << "Comparatie nume (Ion vs Maria): " << CompareName(a, b) << endl;
+    cout << "Comparatie medie: " << CompareAverage(a, b) << endl;
+    cout << "Comparatie nota Mate: " << CompareMath(a, b) << endl;
+
+    return 0;
+}
